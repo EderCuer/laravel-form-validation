@@ -23,3 +23,16 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Client::class, function (Faker $faker) {
+
+	$cpfs = cpfs();
+
+    return [
+        'nome' => $faker->name,
+        'documento' => $cpfs[array_rand($cpfs,1)],
+        'email' => $faker->email,
+        'telefone' => $faker->phoneNumber,
+        'inadimplente' => rand(0,1)
+    ];
+});
